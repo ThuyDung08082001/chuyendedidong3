@@ -13,7 +13,7 @@ const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setClicked }) => {
         <View
           style={
             clicked
-              ? styles.searchBar__clicked
+              ? [styles.searchBar__clicked]
               : styles.searchBar__unclicked
           }
         >

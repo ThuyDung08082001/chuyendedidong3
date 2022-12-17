@@ -87,7 +87,7 @@ const Home = ({ navigation }) => {
             }>
               <MaterialCommunityIcons style={styles.FBIcon} name='application-edit-outline' />
             </TouchableOpacity>
-            <Text style={styles.FBText} numberOfLines={2} >total purchased </Text>
+            <Text style={styles.FBText} numberOfLines={2} >tổng chi  </Text>
           </View>
           <View style={{ justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
             <TouchableOpacity style={[styles.FBtn,]} onPress={() =>
@@ -95,7 +95,7 @@ const Home = ({ navigation }) => {
             }>
               <MaterialCommunityIcons style={styles.FBIcon} name='archive-check-outline' />
             </TouchableOpacity>
-            <Text style={styles.FBText} numberOfLines={2} >day revenue</Text>
+            <Text style={styles.FBText} numberOfLines={2} >doanh thu ngày</Text>
           </View>
           <View style={{ justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
             <TouchableOpacity style={[styles.FBtn,]} onPress={() => Alert.alert("check out")} >
@@ -128,8 +128,9 @@ const Home = ({ navigation }) => {
             style={{ flex: 1, backgroundColor: 'white' }}
             onPress={() => { navigation.navigate('Login') }}
           >
+            
             <View style={[styles.belowBtn, styles.left]}>
-              <Ionicons style={[styles.drop_icons, styles.top]} name='log-out' />
+            <MaterialCommunityIcons style={styles.drop_icons} name='account-reactivate-outline' />
               <BLtext numberOfLines={2}> Log Out </BLtext>
             </View>
           </TouchableOpacity>
@@ -199,9 +200,6 @@ const styles = StyleSheet.create({
   },
   right: {
     right: "5%",
-  },
-  top: {
-    fontSize: 50,
   },
   FBtn: {
     height: 70,

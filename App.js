@@ -21,6 +21,7 @@ import Salary from './screens/Salary';
 import WorkingkDate from './screens/WorkingDate';
 import DayRevenue from './screens/DayRevenue';
 import TotalPurchased from './screens/TotalPurchased';
+import TestClicked from './screens/TestClicked';
 // import TestNav from './screens/TestNav'
 
 
@@ -53,6 +54,7 @@ const MyStack = () => {
         <Stack.Screen name="TestIDBtn" component={TestIDBtn} />
         <Stack.Screen name="OnWorking" component={OnWorking} />
         <Stack.Screen name="Salary" component={Salary} />
+        <Stack.Screen name="TestClicked" component={TestClicked} />
         <Stack.Screen name="TotalPurchased" component={TotalPurchased} />
         <Stack.Screen name="DayRevenue" component={DayRevenue} />
         <Stack.Screen name="WorkingkDate" component={WorkingkDate} />

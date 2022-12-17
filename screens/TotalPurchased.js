@@ -25,19 +25,19 @@ const TotalPurchased = ({ navigation }) => {
             <InnerContainer>
                 <OLPic resizeMode="cover" source={require('../assets/image/br4.png')} ></OLPic>
                 <FormAdd style={styles.TouchableImage} >
-                    <PageTitle style={{ marginBottom:"7%" }}>Total Purchased</PageTitle>
+                    <PageTitle style={{ marginBottom:"7%" }}>Tổng Chi</PageTitle>
                     <Formik
-                        initialValues={{ totalpurchased :''}}
+                        initialValues={{ revenuetext:''}}
                         onSubmit={(values) => { console.log(values); }} >
                         {({ handleChange, handleBlur, HandleSubmit, values }) => (
                             <StyledFormArea>
                                 <MyTextInput
                                     autofocus
-                                    label="Total Purchased"
+                                    label="Tổng Chi"
                                     placeholderTextColor={blur}
-                                    onChangeText={handleChange('totalpurchased ')}
-                                    onBlur={handleBlur('totalpurchased ')}
-                                    value={values.totalpurchased } >
+                                    onChangeText={handleChange('revenuetext')}
+                                    onBlur={handleBlur('revenuetext')}
+                                    value={values.revenuetext} >
                                 </MyTextInput>
                                 <Line />
                                 <StyledButton

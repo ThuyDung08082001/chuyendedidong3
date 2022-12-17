@@ -14,7 +14,7 @@ const Salary = ({ navigation }) => {
             <InnerContainer>
                 <OLPic resizeMode="cover" source={require('../assets/image/br3.png')} ></OLPic>
                 <TableStyled style={styles.TouchableImage} >
-                    <PageTitle>Revenue</PageTitle>
+                    <PageTitle>Tính Lương</PageTitle>
                     <ScrollView style={styles.scrollView}>
                         <DataTable style={styles.container1}>
                             <DataTable.Header style={styles.tableHeader}>
@@ -30,43 +30,43 @@ const Salary = ({ navigation }) => {
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>
                             </DataTable.Row>
                             <DataTable.Row>
-                                <DataTable.Cell>A Nguyễn</DataTable.Cell>
+                                <DataTable.Cell></DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >11/11/02</DataTable.Cell>
                                 <DataTable.Cell style={styles.text} >8h</DataTable.Cell>
                                 <DataTable.Cell style={styles.text}>2300$</DataTable.Cell>

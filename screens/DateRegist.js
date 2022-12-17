@@ -19,9 +19,7 @@ const DateRegist = ({ navigation }) => {
                 <TableStyled style={styles.TouchableImage} >
                     <PageTitle>Date Regist</PageTitle>
                     <ScrollView style={{ width: '100%', height: '100%', flex: 1 }} horizontal={true}
-                        showsVerticalScrollIndicator={false}
-                        showsHorizontalScrollIndicator={false}
-                        pagingEnabled={true} >
+                      >
                         <DataTable style={styles.container1}>
                             <DataTable.Header style={styles.tableHeader}>
                                 <DataTable.Title style={styles.text}>Date</DataTable.Title>

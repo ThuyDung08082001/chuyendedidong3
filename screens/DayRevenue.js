@@ -25,7 +25,7 @@ const DayRevenue = ({ navigation }) => {
             <InnerContainer>
                 <OLPic resizeMode="cover" source={require('../assets/image/br4.png')} ></OLPic>
                 <FormAdd style={styles.TouchableImage} >
-                    <PageTitle style={{ marginBottom:"7%" }}>Day Revenue</PageTitle>
+                    <PageTitle style={{ marginBottom:"7%" }}>Doanh Thu Ngày</PageTitle>
                     <Formik
                         initialValues={{ revenuetext:''}}
                         onSubmit={(values) => { console.log(values); }} >
@@ -33,7 +33,7 @@ const DayRevenue = ({ navigation }) => {
                             <StyledFormArea>
                                 <MyTextInput
                                     autofocus
-                                    label="Day Revenue"
+                                    label="Doanh Thu Ngày"
                                     placeholderTextColor={blur}
                                     onChangeText={handleChange('revenuetext')}
                                     onBlur={handleBlur('revenuetext')}
