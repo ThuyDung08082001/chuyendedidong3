@@ -1,5 +1,19 @@
 import React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Colors } from './styles';
+const {
+    light_brand,
+    primary,
+    secondary,
+    tertiary,
+    blue,
+    darkLight,
+    brand,
+    green,
+    red,
+    black,
+    blur,
+  } = Colors;
 
 export default function Button(props) {
     const { onPress, title = 'Save' } = props;
@@ -20,7 +34,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 8,
         elevation: 3,
-        backgroundColor: '#a85b3c',
+        backgroundColor: brand,
         marginVertical: 5,
     },
     text: {
@@ -28,7 +42,7 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'white',
+        color: primary,
     },
     btnSettting:{
         width: '90%',

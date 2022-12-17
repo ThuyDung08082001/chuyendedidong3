@@ -37,7 +37,7 @@ const Home = ({ navigation }) => {
   return (
     <StyledHomeContainer style={styles.container} >
       <InnerContainer>
-        <HomePageImage style={styles.TouchableImage} resizeMode="cover" source={require('../assets/image/b.png')} />
+        <HomePageImage style={styles.TouchableImage} resizeMode="cover" source={require('../assets/image/br2.jpg')} />
         <SearchBar searchPhrase={searchPhrase}
           setSearchPhrase={setSearchPhrase}
           clicked={clicked}
@@ -46,7 +46,7 @@ const Home = ({ navigation }) => {
         />
         <HelloText>Xin Chào!</HelloText>
         <TouchableHomeImage onPress={() => { Alert.alert("Already Log out") }}>
-          <StyledHomeBrownImage resizeMode="cover" source={require('../assets/image/a.png')} />
+          <StyledHomeBrownImage resizeMode="cover" source={require('../assets/image/br5.jpg')} />
         </TouchableHomeImage>
         <View style={styles.FlexRow}>
           <View style={styles.FlexItem}>
@@ -63,7 +63,7 @@ const Home = ({ navigation }) => {
           </View>
           <View style={styles.FlexItem}>
             <THButton style={[styles.TouchableImage, styles.LeftColor]}
-              onPress={() => { console.log('TableChoosing'), navigation.navigate('TableChoosing') }}>
+              onPress={() => { console.log('TableChoosing'), navigation.navigate('Notification') }}>
               <MaterialCommunityIcons style={styles.icons} name='coffee-to-go' />
               <THtext numberOfLines={2}> Working </THtext>
             </THButton>
@@ -74,66 +74,36 @@ const Home = ({ navigation }) => {
             </THButton>
           </View>
         </View>
-        <View style={{ flex: .53, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', marginHorizontal: "20%", marginTop: "5%" }}>
-          <View style={{ justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
-            <TouchableOpacity style={[styles.FBtn,]} onPress={() => Alert.alert("check in")} >
-              <MaterialCommunityIcons style={styles.FBIcon} name='checkbox-marked-circle-outline' />
-            </TouchableOpacity>
-            <Text style={styles.FBText} numberOfLines={2} >Check In   <Ionicons style={{ color: secondary }} name='log-out' />   </Text>
-          </View>
-          <View style={{ justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
-            <TouchableOpacity style={[styles.FBtn,]} onPress={() =>
-              navigation.navigate('TotalPurchased')
-            }>
-              <MaterialCommunityIcons style={styles.FBIcon} name='application-edit-outline' />
-            </TouchableOpacity>
-            <Text style={styles.FBText} numberOfLines={2} >tổng chi  </Text>
-          </View>
-          <View style={{ justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
-            <TouchableOpacity style={[styles.FBtn,]} onPress={() =>
-              navigation.navigate('DayRevenue')
-            }>
-              <MaterialCommunityIcons style={styles.FBIcon} name='archive-check-outline' />
-            </TouchableOpacity>
-            <Text style={styles.FBText} numberOfLines={2} >doanh thu ngày</Text>
-          </View>
-          <View style={{ justifyContent: 'center', flexDirection: 'column', alignItems: 'center', }}>
-            <TouchableOpacity style={[styles.FBtn,]} onPress={() => Alert.alert("check out")} >
-              <MaterialCommunityIcons style={styles.FBIcon} name='clock-remove-outline' />
-            </TouchableOpacity>
-            <Text style={styles.FBText} numberOfLines={2} >Check Out</Text>
-          </View>
-        </View>
+
       </InnerContainer>
-
-
       <View style={{ flex: .15, alignItems: 'center', justifyContent: 'center', marginBottom: "-10%" }}>
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-          <TouchableOpacity style={{ flex: 1, backgroundColor: 'white' }} onPress={() => { navigation.navigate('DrinkChoosing') }}>
+          <TouchableOpacity style={{ flex: 1, backgroundColor: 'white' }} onPress={() => { Alert.alert("Check In") }}>
             <View style={[styles.belowBtn, styles.right]}>
-              <Ionicons style={styles.drop_icons} name='md-list-circle-outline' />
-              <BLtext numberOfLines={2}> Take Away </BLtext>
+            <MaterialCommunityIcons style={styles.drop_icons} name='checkbox-marked-circle-outline' />
+              <BLtext numberOfLines={2}> Check In </BLtext>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{ flex: 1, backgroundColor: 'white' }}
-            onPress={() => { navigation.navigate('Notification') }}
-          >
-            <View style={[styles.belowBtn,]}>
-              <Ionicons style={styles.drop_icons} name='md-notifications-circle-outline' />
-              <BLtext numberOfLines={2}> Notification </BLtext>
-            </View>
-          </TouchableOpacity>
           <TouchableOpacity
             style={{ flex: 1, backgroundColor: 'white' }}
             onPress={() => { navigation.navigate('Login') }}
           >
-            
-            <View style={[styles.belowBtn, styles.left]}>
-            <MaterialCommunityIcons style={styles.drop_icons} name='account-reactivate-outline' />
+            <View style={[styles.belowBtn]}>
+              <MaterialCommunityIcons style={styles.drop_icons} name='account-reactivate-outline' />
               <BLtext numberOfLines={2}> Log Out </BLtext>
             </View>
           </TouchableOpacity>
+
+          <TouchableOpacity style={{ flex: 1, backgroundColor: 'white' }}
+            onPress={() => { Alert.alert("Check Out") }}
+          >
+            <View style={[styles.belowBtn, styles.left]}>
+              <MaterialCommunityIcons style={styles.drop_icons} name='clock-remove-outline' />
+              <BLtext numberOfLines={2}> Check Out </BLtext>
+            </View>
+          </TouchableOpacity>
+
 
         </View>
       </View>
@@ -151,7 +121,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     flexDirection: "row",
-    marginTop: "-15%"
+    marginTop: "-8.5%"
   },
   FlexItem: {
     flex: 1,

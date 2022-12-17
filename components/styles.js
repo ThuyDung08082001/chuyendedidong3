@@ -16,7 +16,10 @@ export const Colors = {
   secondary: "#E5E7EB",
   tertiary: "#1F2937",
   darkLight: "#1F2937",
-  brand: "#a85b3c",
+  // brand: "#a85b3c",
+  // brand: "#395d6f",
+  // brand: "#a76f50",
+  brand: "#b97e5a",
   light_brand: "#ce6b43",
   neon_light_brand: "#f6bda5",
   //green: "#10B981",
@@ -30,8 +33,12 @@ export const Colors = {
   blur: "#adafb2",
   neon_blur: "#f0eeee",
   BR_blur: "#d9dbda",
-  JT_brand: "#714334",
-  OJT_brand: "#77acb3",
+  // JT_brand: "#284254",
+  JT_brand: "#386379",
+  // OJT_brand: "#D7BDAB",
+  OJT_brand: "#c79c86",
+  // JT_brand: "#714334",
+  // OJT_brand: "#77acb3",
 };
 
 const {

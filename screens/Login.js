@@ -43,7 +43,7 @@ function Login({ navigation }) {
     return (
         <StyledContainer >
             <InnerContainer>
-                <PageLogo resizeMode="cover" source={require('../assets/image/a.png')} ></PageLogo>
+                <PageLogo resizeMode="cover" source={require('../assets/image/br4.png')} />
                 <FormLog style={styles.TouchableImage} >
                     <PageTitle>Login</PageTitle>
                     <Formik
@@ -83,11 +83,6 @@ function Login({ navigation }) {
                                 }} >
                                     <ButtonText>
                                         Login
-                                    </ButtonText>
-                                </StyledButton>
-                                <StyledButton onPress={() => { navigation.navigate('TestClicked') }}>
-                                    <ButtonText>
-                                        Test
                                     </ButtonText>
                                 </StyledButton>
                             </StyledFormArea>
