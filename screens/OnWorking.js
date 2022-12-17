@@ -24,13 +24,21 @@ const {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { io } from "socket.io-client/dist/socket.io.js";
 import url from "../Url";
+const socket = io("http://172.20.10.4:3000", {
+  jsonp: false,
+});
 
 const OnWorking = (navigation) => {
   const [drinksOrder, setDrinksOrder] = useState([]);
+  const [check, setCheck] = useState(false);
 
   useEffect(() => {
     getAllDrinkOrder();
-  }, []);
+  }, [check]);
+  socket.on("sever up data drink order", () => {
+    console.log("Client nhận data drink order từ sever: ");
+    setCheck(!check);
+  });
   const getAllDrinkOrder = async () => {
     await fetch(url + "drinkorder/list")
       .then((res) => res.json())
@@ -41,20 +49,17 @@ const OnWorking = (navigation) => {
       })
       .catch((err) => console.log("ERR", err));
   };
-  const socket = io("http://192.168.1.144:3000", {
-    jsonp: false,
-  });
 
   // xuất lên giao diện.map()
   const drinkOrderAll = drinksOrder.map((item, index) => {
-    console.log(item.table);
+    //console.log(item.table);
     return (
       <TouchableOpacity style={[styles.Touch, styles.shadow]}>
         <View style={[styles.item]}>
           <Image
             style={styles.Image}
             resizeMode="cover"
-            source={require("../assets/image/cf.png")}
+            source={{ uri: `${item.drink.image}` }}
           />
           <View style={styles.textArea}>
             <Text numberOfLines={1} style={styles.nametext}>
