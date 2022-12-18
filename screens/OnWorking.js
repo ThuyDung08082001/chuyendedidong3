@@ -24,7 +24,11 @@ const {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { io } from "socket.io-client/dist/socket.io.js";
 import url from "../Url";
-const socket = io("http://172.20.10.4:3000", {
+// const socket = io("http://172.20.10.4:3000", {
+//   jsonp: false,
+// });
+
+const socket = io("https://coffee-app.up.railway.app", {
   jsonp: false,
 });
 
@@ -40,7 +44,7 @@ const OnWorking = (navigation) => {
     setCheck(!check);
   });
   const getAllDrinkOrder = async () => {
-    await fetch(url + "drinkorder/list")
+    await fetch(url + "drinkorder/list/decrease/createat")
       .then((res) => res.json())
       .then((res) => {
         //console.log(res.data);
