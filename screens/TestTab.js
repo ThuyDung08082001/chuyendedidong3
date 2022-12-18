@@ -36,8 +36,8 @@ const TestTab = () => {
         },
         
       }} >
-      <Tab.Screen name="Đã Làm" component={Done} />
       <Tab.Screen name="Đang Làm" component={OnWorking} />
+      <Tab.Screen name="Đã Làm" component={Done} />
     </Tab.Navigator>
   );
 }

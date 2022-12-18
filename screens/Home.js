@@ -70,6 +70,7 @@ const Home = ({ navigation }) => {
   return (
     <StyledHomeContainer style={styles.container}>
       <InnerContainer>
+<<<<<<< HEAD
         <HomePageImage
           style={styles.TouchableImage}
           resizeMode="cover"
@@ -77,12 +78,17 @@ const Home = ({ navigation }) => {
         />
         <SearchBar
           searchPhrase={searchPhrase}
+=======
+        <HomePageImage style={styles.TouchableImage} resizeMode="cover" source={require('../assets/image/br2.jpg')} />
+        <SearchBar searchPhrase={searchPhrase}
+>>>>>>> main
           setSearchPhrase={setSearchPhrase}
           clicked={clicked}
           setClicked={setClicked}
           styles={styles.SearchBar}
         />
         <HelloText>Xin Chào!</HelloText>
+<<<<<<< HEAD
         <TouchableHomeImage
           onPress={() => {
             Alert.alert("Already Log out");
@@ -92,6 +98,10 @@ const Home = ({ navigation }) => {
             resizeMode="cover"
             source={require("../assets/image/a.png")}
           />
+=======
+        <TouchableHomeImage onPress={() => { Alert.alert("Already Log out") }}>
+          <StyledHomeBrownImage resizeMode="cover" source={require('../assets/image/br5.jpg')} />
+>>>>>>> main
         </TouchableHomeImage>
         <View style={styles.FlexRow}>
           <View style={styles.FlexItem}>
@@ -122,6 +132,7 @@ const Home = ({ navigation }) => {
             </THButton>
           </View>
           <View style={styles.FlexItem}>
+<<<<<<< HEAD
             <THButton
               style={[styles.TouchableImage, styles.LeftColor]}
               onPress={() => {
@@ -133,6 +144,11 @@ const Home = ({ navigation }) => {
                 style={styles.icons}
                 name="coffee-to-go"
               />
+=======
+            <THButton style={[styles.TouchableImage, styles.LeftColor]}
+              onPress={() => { console.log('TableChoosing'), navigation.navigate('Notification') }}>
+              <MaterialCommunityIcons style={styles.icons} name='coffee-to-go' />
+>>>>>>> main
               <THtext numberOfLines={2}> Working </THtext>
             </THButton>
             <THButton
@@ -150,6 +166,7 @@ const Home = ({ navigation }) => {
             </THButton>
           </View>
         </View>
+<<<<<<< HEAD
         <View
           style={{
             flex: 0.53,
@@ -287,12 +304,26 @@ const Home = ({ navigation }) => {
               <BLtext numberOfLines={2}> Notification </BLtext>
             </View>
           </TouchableOpacity>
+=======
+
+      </InnerContainer>
+      <View style={{ flex: .15, alignItems: 'center', justifyContent: 'center', marginBottom: "-10%" }}>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+          <TouchableOpacity style={{ flex: 1, backgroundColor: 'white' }} onPress={() => { Alert.alert("Check In") }}>
+            <View style={[styles.belowBtn, styles.right]}>
+            <MaterialCommunityIcons style={styles.drop_icons} name='checkbox-marked-circle-outline' />
+              <BLtext numberOfLines={2}> Check In </BLtext>
+            </View>
+          </TouchableOpacity>
+
+>>>>>>> main
           <TouchableOpacity
             style={{ flex: 1, backgroundColor: "white" }}
             onPress={() => {
               navigation.navigate("Login");
             }}
           >
+<<<<<<< HEAD
             <View style={[styles.belowBtn, styles.left]}>
               <Ionicons
                 style={[styles.drop_icons, styles.top]}
@@ -301,6 +332,24 @@ const Home = ({ navigation }) => {
               <BLtext numberOfLines={2}> Log Out </BLtext>
             </View>
           </TouchableOpacity>
+=======
+            <View style={[styles.belowBtn]}>
+              <MaterialCommunityIcons style={styles.drop_icons} name='account-reactivate-outline' />
+              <BLtext numberOfLines={2}> Log Out </BLtext>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={{ flex: 1, backgroundColor: 'white' }}
+            onPress={() => { Alert.alert("Check Out") }}
+          >
+            <View style={[styles.belowBtn, styles.left]}>
+              <MaterialCommunityIcons style={styles.drop_icons} name='clock-remove-outline' />
+              <BLtext numberOfLines={2}> Check Out </BLtext>
+            </View>
+          </TouchableOpacity>
+
+
+>>>>>>> main
         </View>
       </View>
     </StyledHomeContainer>
@@ -317,7 +366,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
     flexDirection: "row",
+<<<<<<< HEAD
     marginTop: "-15%",
+=======
+    marginTop: "-8.5%"
+>>>>>>> main
   },
   FlexItem: {
     flex: 1,
@@ -366,9 +419,6 @@ const styles = StyleSheet.create({
   },
   right: {
     right: "5%",
-  },
-  top: {
-    fontSize: 50,
   },
   FBtn: {
     height: 70,
