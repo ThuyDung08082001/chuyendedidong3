@@ -23,42 +23,78 @@ const {
 } = Colors;
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { io } from "socket.io-client/dist/socket.io.js";
+import url from "../Url";
+// const socket = io("http://172.20.10.4:3000", {
+//   jsonp: false,
+// });
 
+const socket = io("https://coffee-app.up.railway.app", {
+  jsonp: false,
+});
 
 const OnWorking = (navigation) => {
-  const socket = io("http://192.168.1.144:3000", {
-    jsonp: false,
+  const [drinksOrder, setDrinksOrder] = useState([]);
+  const [check, setCheck] = useState(false);
+
+  useEffect(() => {
+    getAllDrinkOrder();
+  }, [check]);
+  socket.on("sever up data drink order", () => {
+    console.log("Client nhận data drink order từ sever: ");
+    setCheck(!check);
+  });
+  const getAllDrinkOrder = async () => {
+    await fetch(url + "drinkorder/list/decrease/createat")
+      .then((res) => res.json())
+      .then((res) => {
+        //console.log(res.data);
+        var data = res.data;
+        setDrinksOrder(data);
+      })
+      .catch((err) => console.log("ERR", err));
+  };
+
+  // xuất lên giao diện.map()
+  const drinkOrderAll = drinksOrder.map((item, index) => {
+    //console.log(item.table);
+    return (
+      <TouchableOpacity style={[styles.Touch, styles.shadow]}>
+        <View style={[styles.item]}>
+          <Image
+            style={styles.Image}
+            resizeMode="cover"
+            source={{ uri: `${item.drink.image}` }}
+          />
+          <View style={styles.textArea}>
+            <Text numberOfLines={1} style={styles.nametext}>
+              {item.drink.name}
+            </Text>
+            <View style={styles.ntnText}>
+              <Text style={styles.text}>Ly : {item.qty}</Text>
+              {item.table && <Text style={styles.text}>{item.table.name}</Text>}
+            </View>
+          </View>
+          <View style={styles.btnArea}>
+            <TouchableOpacity style={[styles.btn, styles.green]}>
+              <MaterialCommunityIcons
+                style={styles.btnText}
+                name="clipboard-check-outline"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.btn, styles.blue]}>
+              <MaterialCommunityIcons
+                style={styles.btnText}
+                name="cash-check"
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
   });
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        <TouchableOpacity style={[styles.Touch, styles.shadow]}>
-          <View style={[styles.item]}>
-            <Image
-              style={styles.Image}
-              resizeMode="cover"
-              source={require("../assets/image/cf.png")}
-            />
-            <View style={styles.textArea}>
-              <Text numberOfLines={1} style={styles.nametext}>
-                Cafe Sữa
-              </Text>
-              <View style={styles.ntnText}>
-                <Text style={styles.text}>Ly : 1</Text>
-                <Text style={styles.text}>Bàn: 1</Text>
-              </View>
-            </View>
-            <View style={styles.btnArea}>
-              <TouchableOpacity style={[styles.btn, styles.green]}>
-                <MaterialCommunityIcons style={styles.btnText} name="clipboard-check-outline" />
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.btn, styles.blue]}>
-                <MaterialCommunityIcons style={styles.btnText} name="cash-check" />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </ScrollView>
+      <ScrollView style={styles.scrollView}>{drinkOrderAll}</ScrollView>
     </SafeAreaView>
   );
 };
@@ -118,7 +154,7 @@ const styles = StyleSheet.create({
   text: {
     marginHorizontal: "7%",
     fontWeight: "bold",
-    fontSize: 17,
+    fontSize: 15,
   },
   btnArea: {
     flex: 0.5,
