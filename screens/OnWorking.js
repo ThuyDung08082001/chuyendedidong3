@@ -23,20 +23,16 @@ const {
 } = Colors;
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { io } from "socket.io-client/dist/socket.io.js";
-<<<<<<< HEAD
 import url from "../Url";
 // const socket = io("http://172.20.10.4:3000", {
 //   jsonp: false,
 // });
-=======
->>>>>>> main
 
 const socket = io("https://coffee-app.up.railway.app", {
   jsonp: false,
 });
 
 const OnWorking = (navigation) => {
-<<<<<<< HEAD
   const [drinksOrder, setDrinksOrder] = useState([]);
   const [check, setCheck] = useState(false);
 
@@ -103,45 +99,6 @@ const OnWorking = (navigation) => {
   );
 };
 
-=======
-  const socket = io("http://192.168.1.144:3000", {
-    jsonp: false,
-  });
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        <TouchableOpacity style={[styles.Touch, styles.shadow]}>
-          <View style={[styles.item]}>
-            <Image
-              style={styles.Image}
-              resizeMode="cover"
-              source={require("../assets/image/cf.png")}
-            />
-            <View style={styles.textArea}>
-              <Text numberOfLines={1} style={styles.nametext}>
-                Cafe Sữa
-              </Text>
-              <View style={styles.ntnText}>
-                <Text style={styles.text}>Ly : 1</Text>
-                <Text style={styles.text}>Bàn: 1</Text>
-              </View>
-            </View>
-            <View style={styles.btnArea}>
-              <TouchableOpacity style={[styles.btn, styles.green]}>
-                <MaterialCommunityIcons style={styles.btnText} name="clipboard-check-outline" />
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.btn, styles.blue]}>
-                <MaterialCommunityIcons style={styles.btnText} name="cash-check" />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
->>>>>>> main
 export default OnWorking;
 
 const styles = StyleSheet.create({
@@ -197,11 +154,7 @@ const styles = StyleSheet.create({
   text: {
     marginHorizontal: "7%",
     fontWeight: "bold",
-<<<<<<< HEAD
     fontSize: 15,
-=======
-    fontSize: 17,
->>>>>>> main
   },
   btnArea: {
     flex: 0.5,
