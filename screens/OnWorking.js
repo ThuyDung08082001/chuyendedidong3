@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Image,
   SafeAreaView,
@@ -35,16 +36,38 @@ const socket = io("https://coffee-app.up.railway.app", {
 const OnWorking = (navigation) => {
   const [drinksOrder, setDrinksOrder] = useState([]);
   const [check, setCheck] = useState(false);
+  const [checkStatus, setCheckStatus] = useState(true);
 
   useEffect(() => {
     getAllDrinkOrder();
   }, [check]);
+
   socket.on("sever up data drink order", () => {
-    console.log("Client nhận data drink order từ sever: ");
+    //console.log("Client nhận data drink order từ sever: ");
     setCheck(!check);
   });
+
+  const handleSendSuccessDrinkOrder = () => {
+    socket.emit("client up data success drink order");
+  };
+
+  const createTwoButtonAlert = (id) =>
+    Alert.alert("Thông báo", "bạn có chắc là đã làm xong chưa ?", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "OK",
+        onPress: () => {
+          handleUpdateStatus(id), handleSendSuccessDrinkOrder();
+        },
+      },
+    ]);
+
   const getAllDrinkOrder = async () => {
-    await fetch(url + "drinkorder/list/decrease/createat")
+    await fetch(url + "drinkorder/list")
       .then((res) => res.json())
       .then((res) => {
         //console.log(res.data);
@@ -54,41 +77,66 @@ const OnWorking = (navigation) => {
       .catch((err) => console.log("ERR", err));
   };
 
+  const handleUpdateStatus = async (id) => {
+    //console.log(url + "table/update/status/" + id);
+    await fetch(url + "drinkorder/update/status/" + id, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ status: checkStatus }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setCheck(!check);
+      })
+      .catch((err) => console.log("ERR", err));
+  };
+
+  const handleDone = (id) => {
+    createTwoButtonAlert(id);
+  };
+
   // xuất lên giao diện.map()
   const drinkOrderAll = drinksOrder.map((item, index) => {
     //console.log(item.table);
     return (
-      <TouchableOpacity style={[styles.Touch, styles.shadow]}>
-        <View style={[styles.item]}>
-          <Image
-            style={styles.Image}
-            resizeMode="cover"
-            source={{ uri: `${item.drink.image}` }}
-          />
-          <View style={styles.textArea}>
-            <Text numberOfLines={1} style={styles.nametext}>
-              {item.drink.name}
-            </Text>
-            <View style={styles.ntnText}>
-              <Text style={styles.text}>Ly : {item.qty}</Text>
-              {item.table && <Text style={styles.text}>{item.table.name}</Text>}
+      <TouchableOpacity key={item._id} style={[styles.Touch, styles.shadow]}>
+        {item.status == false && (
+          <View style={[styles.item]}>
+            <Image
+              style={styles.Image}
+              resizeMode="cover"
+              source={{ uri: `${item.drink.image}` }}
+            />
+            <View style={styles.textArea}>
+              <Text numberOfLines={1} style={styles.nametext}>
+                {item.drink.name}
+              </Text>
+              <View style={styles.ntnText}>
+                <Text style={styles.text}>Ly : {item.qty}</Text>
+                {item.table && (
+                  <Text style={styles.text}>{item.table.name}</Text>
+                )}
+              </View>
+            </View>
+            <View style={styles.btnArea}>
+              <TouchableOpacity style={[styles.btn, styles.green]}>
+                <MaterialCommunityIcons
+                  style={styles.btnText}
+                  name="clipboard-check-outline"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleDone(item._id)}
+                style={[styles.btn, styles.blue]}
+              >
+                <MaterialCommunityIcons
+                  style={styles.btnText}
+                  name="cash-check"
+                />
+              </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.btnArea}>
-            <TouchableOpacity style={[styles.btn, styles.green]}>
-              <MaterialCommunityIcons
-                style={styles.btnText}
-                name="clipboard-check-outline"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn, styles.blue]}>
-              <MaterialCommunityIcons
-                style={styles.btnText}
-                name="cash-check"
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
+        )}
       </TouchableOpacity>
     );
   });

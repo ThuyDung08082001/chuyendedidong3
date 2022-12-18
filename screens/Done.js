@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Colors } from "../components/styles";
 const {
   brand,
@@ -23,30 +23,55 @@ const {
 } = Colors;
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { io } from "socket.io-client/dist/socket.io.js";
-
+const socket = io("https://coffee-app.up.railway.app", {
+  jsonp: false,
+});
+import url from "../Url";
 const Done = (navigation) => {
-  const socket = io("http://192.168.1.144:3000", {
-    jsonp: false,
+  const [drinksOrder, setDrinksOrder] = useState([]);
+  const [check, setCheck] = useState(false);
+  const [checkStatus, setCheckStatus] = useState(true);
+
+  useEffect(() => {
+    getAllDrinkOrder();
+  }, [check]);
+
+  socket.on("sever up data success drink order to client", () => {
+    //console.log("Client nhận data drink order từ sever: ");
+    setCheck(!check);
   });
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}
-       showsVerticalScrollIndicator={false}
-      >
-        <TouchableOpacity style={[styles.Touch, styles.shadow]}>
+
+  const getAllDrinkOrder = async () => {
+    await fetch(url + "drinkorder/list")
+      .then((res) => res.json())
+      .then((res) => {
+        //console.log(res.data);
+        var data = res.data;
+        setDrinksOrder(data);
+      })
+      .catch((err) => console.log("ERR", err));
+  };
+
+  const drinkOrderAll = drinksOrder.map((item, index) => {
+    //console.log(item.table);
+    return (
+      <TouchableOpacity key={item._id} style={[styles.Touch, styles.shadow]}>
+        {item.status == true && (
           <View style={[styles.item]}>
             <Image
               style={styles.Image}
               resizeMode="cover"
-              source={require("../assets/image/cf.png")}
+              source={{ uri: `${item.drink.image}` }}
             />
             <View style={styles.textArea}>
               <Text numberOfLines={1} style={styles.nametext}>
-                Cafe Sữa
+                {item.drink.name}
               </Text>
               <View style={styles.ntnText}>
-                <Text style={styles.text}>Ly : 1</Text>
-                <Text style={styles.text}>Bàn: 1</Text>
+                <Text style={styles.text}>Ly : {item.qty}</Text>
+                {item.table && (
+                  <Text style={styles.text}>{item.table.name}</Text>
+                )}
               </View>
             </View>
             <View style={styles.btnArea}>
@@ -56,12 +81,29 @@ const Done = (navigation) => {
                   name="clipboard-check-outline"
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.btn, styles.blue]}>
-                <MaterialCommunityIcons style={styles.btnText} name="cash-check" />
+              <TouchableOpacity
+                onPress={() => handleDone(item._id)}
+                style={[styles.btn, styles.blue]}
+              >
+                <MaterialCommunityIcons
+                  style={styles.btnText}
+                  name="cash-check"
+                />
               </TouchableOpacity>
             </View>
           </View>
-        </TouchableOpacity>
+        )}
+      </TouchableOpacity>
+    );
+  });
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
+        {drinkOrderAll}
       </ScrollView>
     </SafeAreaView>
   );
