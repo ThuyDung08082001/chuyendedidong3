@@ -56,7 +56,7 @@ const Done = (navigation) => {
     //console.log(item.table);
     return (
       <TouchableOpacity key={item._id} style={[styles.Touch, styles.shadow]}>
-        {item.status == true && (
+        {item.status == true && item.arrive == false && (
           <View style={[styles.item]}>
             <Image
               style={styles.Image}
